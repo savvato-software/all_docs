@@ -1,0 +1,17 @@
+Attributes
+---
+
+Frontend
+	need the attributes page
+	add four fields labeled adverb, verb, preposition, and noun
+	add submit button
+		this should call the backend applyPhraseToUser endpoint, supplying the four values
+
+Backend
+	Create the applyPhraseToUser endpoint
+	Should validate the input
+		check that verb and noun are supplied, return false if not
+		check tha the words do not appear in the rejected-non-english-word table
+			create a database migration which creates the table
+				table should have an id, and a field for the rejected-word
+		return true if valid, false otherwise

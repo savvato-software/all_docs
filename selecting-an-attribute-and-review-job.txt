@@ -1,0 +1,224 @@
+
+login, go to profile page, select add an attribute
+
+presented with page that allows you to enter four words. The words can be anything, if the phrase they form is not in the database, we put the phrase in review. otherwise we allow it.
+
+the first field, adverb, is optional, it can be empty. 
+The second, verb, is required.
+The third, preposition is optional, it can be empty.
+The fourth, noun, is required.
+
+happy path:
+you enter '', 'play', '', 'chess'. the backend checks to see is this phrase already reviewed and accepted, if so, assigns this phrase to your user.
+
+the flow
+----
+	Assign phrase to user, or review process
+	----
+	call backend applyPhraseToUser endpoint, with the 4 strings in the body
+	backend validates the strings, a verb and noun must be supplied, the adverb and preposition can be missing
+		if the above is not valid, return false
+
+	backend selects the id for each word by its body position from the adverb, verb, preposition or noun table as appropriate, 
+		- if any string does not have an id, this is a phrase we have not seen, 
+			check, is this phrase in the to-be-reviewed table? 
+				if so, 
+					we're good, it will be reviewed eventually, return false to front end
+				else 
+					insert the phrase in the to-be-reviewed table 
+					insert the phrase in the review-submitting-user table
+					return false to front end
+		- if all strings have an id, this is a phrase we have reviewed
+			associate the attribute with the user by adding an entry to the user phrase table
+			return true to the front end				
+	
+	frontend, 
+		if it receives false,
+			Notify the user "we have not seen this attribute before, it is in review. We will add it to your profile once it is approved."
+		else
+			show the attribute in the users full attribute list.
+
+
+
+-----
+From the UI, as someone with the REVIEW role, open the Review Pending Phrases page
+
+	The review process
+	----
+	Frontend
+		???
+
+	There is a job that runs over the to-be-reviewed phrases.
+		For each to-be-reviewed phrase
+			Check, is this phrase in the rejected-phrase table?
+				if so, 
+					write a notification for each user who supplied this phrase
+					remove it from to-be-reviewed
+				else,
+
+					Using wordsapi, it checks 
+						the noun
+							is it blank
+								if so, 
+									this is a data error. This should not happen at this point. Log an exception
+									go to next word
+							is it an english word
+								if not an english word,
+									is the provided verb an actual verb? (not blank, and wordsapi says this string is a verb)
+										if so,
+											are the adverb and preposition valid (blank, or wordsapi says they are the correct parts of speech)?
+												if so,
+													we need to set this phrase aside for manual review, set to-be-reviewed::hasBeenGroomed to true
+												if not,
+													write a notification for each user who supplied this phrase
+													write this to rejected-phrase table
+													remove from to-be-reviewed
+										if not an actual verb 
+											write a notification for each user who supplied this phrase
+											write this to rejected-phrase table
+											remove from to-be-reviewed
+							is it a noun
+								if not,
+									write this to rejected-phrase table
+									remove from to-be-reviewed
+									exit
+						the adverb
+							is it blank?
+								if so, move on to the verb
+							is it a word?
+								if not a word, 
+									upsert the string to the rejected-non-english-word table.
+									write this to rejected-phrase table
+									exit
+							is it an adverb?
+								if it is a word, but is not an adverb,
+									write a notification for each user who supplied this phrase								
+									write this to rejected-phrase table
+									remove from to-be-reviewed									
+									exit
+						the verb
+							is it blank?
+								if so, 
+									this is a data error. This should not happen at this point. Log an exception
+									?? rejected phrase table ??
+							is it a word?
+								if not a word,
+									write a notification for each user who supplied this phrase
+									upsert the string to the rejected-non-english-word table.
+									write this to rejected-phrase table
+									exit
+							is it a verb?
+								if not,
+									write a notification for each user who supplied this phrase
+									write this to rejected-phrase table
+									remove from to-be-reviewed									
+									exit
+						the preposition
+							is it blank
+								if so, move on to the noun
+							is it a word
+								if not,
+									write a notification for each user who supplied this phrase
+									upsert the string to the rejected-non-english-word table.
+									write this to rejected-phrase table
+									exit
+							is it a preposition
+								if not,
+									write a notification for each user who supplied this phrase
+									write this to rejected-phrase table
+									remove from to-be-reviewed
+									exit
+
+					If we did not exit out at any point before, the phrase passes all our rules, but still may not be worthy of approval.
+						mark hasBeenGroomed on the row in the to-be-reviewed table to true.
+		loop for-each row in to-be-reviewed
+
+	--
+	Afterwards, the frontend presents to the reviewer one at a time, each row in to-be-reviewed which has hasBeenGroomed set to true.
+
+	--
+
+
+	check do any of the strings appear in the rejected-non-english-word table?
+		if so, exit, indicate this is an invalid phrase 
+	check does the phrase overall appear in the rejected-phrase table?
+		if so, exit, indicate this is an invalid phrase
+	check the phrase table for an id of the combination of those 4 ids
+	if found, 
+		insert row in userphrase table with that id.
+		return true
+	if not found,
+		I believe this is an error condition, because at this point it should have been put up for review, and if it has already been reviewed, and accepted, it should appear in the phrase table as a combination of the 4 ids
+
+
+
+----------------
+DATABASE TABLES
+----------------
+
+user-phrase-table
+---
+userid
+phraseid
+
+phrase table
+---
+id
+adverbId
+verbId
+prepositionId
+nounId
+
+adverb table
+---
+id
+word
+
+verb table
+--
+id
+word
+
+preposition table
+--
+id
+word
+
+noun table
+--
+id
+word
+
+to-be-reviewed table
+--
+id
+hasBeenGroomed boolean
+adverb string
+verb string
+preposition string
+noun string
+
+review-submitting-user table
+--
+userId
+reviewId
+
+review-decision-reason table
+----
+id
+reason
+	approved
+	doesn't make sense
+	vulgar
+
+review-decision table
+--
+id
+reviewId
+userId
+reviewDecisionReasonId
+
+rejected-phrase table
+---
+id
+rejected-phrase
