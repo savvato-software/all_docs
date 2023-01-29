@@ -9,14 +9,16 @@
 
 ## Prerequisites:
 
-This documentation assumes you are on a mac computer and running the latest OS
+This documentation assumes you are on a mac computer and running the latest OS. The instructions translate well to Linux or Windows, as well.
 
 ## Install the following on your computer locally:
 
-1. MySQL server
+1. MySQL server and client
 2. NodeJS along with npm
 3. Java 19
 4. Maven
+
+It will help for you to install version managers for Java and NodeJS. Recommended are SDKMAN for Java, and Node Version Manager (nvm) for Node.
 
 ## Go to github:
 
@@ -25,6 +27,8 @@ Fork the following and clone them to your computer locally:
 1. https://github.com/savvato-software/tribe-app-backend
 2. https://github.com/savvato-software/tribe-app-frontend
 3. https://github.com/savvato-software/savvato-javascript-services
+
+Remember to FORK the above repos, otherwise you won't be able to submit your code changes.
 
 ## On your local computer:
 
@@ -70,7 +74,7 @@ You should get the following response from the terminal:
     +--------------------+
     4 rows in set (0.04 sec)
                             
-If you see tribeapp_db listed above, it is okay, it just means tribeapp has been previously set up, and you will need to drop the existing database. [Then show the command]:
+If you see tribeapp_db listed above, it is okay, we will be dropping any existing database.
 
     DROP DATABASE tribeapp_db;
 
