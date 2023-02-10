@@ -86,8 +86,11 @@ Open a new terminal window and navigate to the tribe-app-backend folder and type
 
 Open a new terminal window and navigate to the tribe-app-frontend folder and type:
 
+    cp src/app/_environments/environment.dev.ts  src/app/_environments/environment.ts 
+    npm i -g @ionic/cli
     ionic serve
                      
 Make sure you shut down your MySQL server on your local machine:
 
     mysql.server stop
+
