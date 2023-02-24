@@ -1,12 +1,10 @@
-<p align="center">
-   Some useful mysql terminal commands
-</p>
+# Some useful mysql terminal commands
 
-#### Command 
+Command:
 
 $ mysql -u root
 
-#### Output
+Output:
 
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 22
@@ -20,15 +18,15 @@ owners.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-mysql> 
+mysql>
 
-#### Command 
+Command:
 
 mysql> show tables;
 
-#### Output
+Output:
 
-| Database           | 
+| Database           |
 | -------------------|
 | information_schema |
 | mysql              |
@@ -37,24 +35,24 @@ mysql> show tables;
 | tribeapp_db        |
 5 rows in set (0.02 sec)
 
-#### Command
+Command:
 
 mysql> use tribeapp_db;
 
-#### Output
+Output:
 
-Reading table information for completion of table and column names
-You can turn off this feature to get a quicker startup with -A
+**Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A**
 
 Database changed
 
-#### Command
+Command:
 
 mysql> show tables;
 
-#### Output
+Output:
 
-| Tables_in_tribeapp_db |           
+| Tables_in_tribeapp_db |
 | ----------------------|
 | adverb                |
 | DATABASECHANGELOG     |
@@ -66,3 +64,14 @@ mysql> show tables;
 | user_user_role_map    |
 | verb                  |
 9 rows in set (0.00 sec)
+
+**Database must be dropped when the database migration scripts are
+changed**
+
+Command:
+
+mysql> drop database tribe_db;
+
+Output (sample, results may vary):
+
+Query OK, 13 rows affected (0.15 sec)
