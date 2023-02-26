@@ -1,5 +1,7 @@
 # Sync your repo before coding
 
+## SUPER IMPORTANT! Do this regularly to avoid conflicts with other team member's code changes.
+
 1. Go to your repo on Github.com. For example, if your username is haxwell, your url would be http://www.github.com/haxwell/REPO-NAME-HERE.
 2. Look for the link to Sync your Fork. Click it
 
