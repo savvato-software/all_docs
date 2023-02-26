@@ -1,8 +1,15 @@
 # Sync your repo before coding
 
-## So I lost all my code and Johnathan spent a considerable amount of time trying to resolve the repo conflict so I created this doc to do every time before I start coding
+1. Go to your repo on Github.com. For example, if your username is haxwell, your url would be http://www.github.com/haxwell/REPO-NAME-HERE.
+2. Look for the link to Sync your Fork. Click it
 
+![title](images/github-sync-fork-img.png)
+Your repo in the cloud should now be in sync with the main Savvato-software branch.
+
+On your local machine, go to the directory for this repo, then
 1. git checkout main
 2. git pull
-3. git checkout your-feature-branch
-4. git merge main
+
+If you have a feature you are working on,
+1. git checkout your-feature-branch
+2. git merge main
