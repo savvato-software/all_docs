@@ -7,22 +7,18 @@
     How to run tribe-app locally on your computer (mac)
 </p>
 
-## Prerequisites:
-
-This documentation assumes you are on a mac computer and running the latest OS. The instructions translate well to Linux or Windows, as well.
-
 ## Install the following on your computer locally:
 
-1. MySQL server and client
-2. NodeJS along with npm
+1. MySQL server and client (v8.0.30, or higher)
+2. NodeJS along with npm (most recent)
 3. Java 19
-4. Maven
+4. Maven (most recent)
 
 It will help for you to install version managers for Java and NodeJS. Recommended are SDKMAN for Java, and Node Version Manager (nvm) for Node.
 
-## Go to github:
+## The Code:
 
-Fork the following and clone them to your computer locally:
+You will use github.com to share code with the rest of the team. You will need to fork the following repos, and clone your forks to your computer locally:
 
 1. https://github.com/savvato-software/tribe-app-backend
 2. https://github.com/savvato-software/tribe-app-frontend
@@ -30,40 +26,34 @@ Fork the following and clone them to your computer locally:
 
 Remember to FORK the above repos, otherwise you won't be able to submit your code changes.
 
-## On your local computer:
+## Setting up the database:
 
-From your command line, type:
+Now we need to log into the database. If you have not set mysql to run automatically, then from your command line, type:
 
     mysql.server start
 
-You should get the following response from the terminal:
-
-    Starting MySQL
-    .... SUCCESS!
-
-Next type:
+Once the server is running, type:
 
     sudo mysql -u root
 
-You should get the following response from the terminal:
+to log in. You should get the following response from the terminal:
 
+```
     Welcome to the MySQL monitor. Commands end with ; or \g.
     Your MySQL connection id is 8
     Server version: 8.0.30 Homebrew
     Copyright (c) 2000, 2022, Oracle and/or its affiliates.
     Oracle is a registered trademark of Oracle Corporation and/or its affiliates. Other names may be trademarks of their respective owners.
     Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.    
+```
             
-Next type:
-
-    mysql
-
-You will get the mysql prompt and then type:
+At the mysql prompt, type:
 
     show databases
 
 You should get the following response from the terminal:
 
+```
     +--------------------+
     | Database |
     +--------------------+
@@ -73,9 +63,12 @@ You should get the following response from the terminal:
     | sys |
     +--------------------+
     4 rows in set (0.04 sec)
+```
                             
 If you see tribeapp_db listed above, it is okay, we will be dropping any existing database.
 
+Type:
+        
     DROP DATABASE tribeapp_db;
 
     CREATE DATABASE tribeapp_db;
@@ -84,18 +77,24 @@ If you see tribeapp_db listed above, it is okay, we will be dropping any existin
 
     GRANT ALL PRIVILEGES on tribeapp_db.* TO 'tribeapp_db_user'@'localhost';
 
+## Running the backend
+
 Open a new terminal window and navigate to the tribe-app-backend folder and type:
 
     mvn spring-boot:run
+
+
+## Running the frontend
 
 Open a new terminal window and navigate to the tribe-app-frontend folder and type:
 
     cp src/app/_environments/environment.dev.ts  src/app/_environments/environment.ts 
     npm i -g @ionic/cli
-    ionic serve
-                     
-Make sure you shut down your MySQL server on your local machine:
 
-    mysql.server stop
+This command will launch the front end
+    
+    ionic serve
     
     
+----
+If you run into any issues, please reach out in Slack! Also feel free to propose any improvement to this documentation. Thanks!
