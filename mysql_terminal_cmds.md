@@ -22,6 +22,17 @@ mysql>
 
 Command:
 
+mysql> use tribeapp_db;
+
+Output:
+
+**Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A**
+
+Database changed
+
+Command:
+
 mysql> show tables;
 
 Output:
@@ -34,17 +45,6 @@ Output:
 | sys                |
 | tribeapp_db        |
 5 rows in set (0.02 sec)
-
-Command:
-
-mysql> use tribeapp_db;
-
-Output:
-
-**Reading table information for completion of table and column names
-You can turn off this feature to get a quicker startup with -A**
-
-Database changed
 
 Command:
 
