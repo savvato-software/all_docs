@@ -79,7 +79,9 @@ Type:
 
 ## Running the backend
 
-Open a new terminal window and navigate to the tribe-app-backend folder and type:
+Look in the `#getting-started` channel in Slack, and there is a file `application.properties`. You need to copy this file, and place it in your backend repo directory at `./src/main/resources/application.properties`.
+
+Then, open a new terminal window and navigate to the tribe-app-backend folder and type:
 
     mvn spring-boot:run
 
