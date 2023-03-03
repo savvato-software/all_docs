@@ -28,9 +28,7 @@ Remember to FORK the above repos, otherwise you won't be able to submit your cod
 
 ## Setting up the database:
 
-Now we need to log into the database. If you have not set mysql to run automatically, then from your command line, type:
-
-    mysql.server start
+Now we need to log into the database. If you have not set mysql to run automatically, you will need to start it. See this article on starting up MySQL Server: https://www.mysqltutorial.org/mysql-adminsitration/start-mysql/.
 
 Once the server is running, type:
 
