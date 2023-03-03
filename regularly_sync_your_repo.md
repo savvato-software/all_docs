@@ -6,6 +6,7 @@
 2. Look for the link to Sync your Fork. Click it
 
 ![title](images/github-sync-fork-img.png)
+
 Your repo in the cloud should now be in sync with the main Savvato-software branch.
 
 On your local machine, go to the directory for this repo, then
