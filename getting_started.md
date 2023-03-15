@@ -1,6 +1,6 @@
 
 <p align="center">
-    Getting started (mac)
+    Getting started 
 </p>
 
 <p align="center">
@@ -13,6 +13,9 @@
 2. NodeJS along with npm (most recent)
 3. Java 19
 4. Maven (most recent)
+
+5. Chrome or Firefox web browser
+6. IntelliJ
 
 It will help for you to install version managers for Java and NodeJS. Recommended are SDKMAN for Java, and Node Version Manager (nvm) for Node.
 
