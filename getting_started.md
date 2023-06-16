@@ -27,7 +27,7 @@ You will use github.com to share code with the rest of the team. You will need t
 2. https://github.com/savvato-software/tribe-app-frontend
 3. https://github.com/savvato-software/savvato-javascript-services
 
-Remember to FORK the above repos, otherwise you won't be able to submit your code changes.
+Remember to FORK the above repos, otherwise you won't be able to submit your code changes. When you do your FORK, you will have the option to clone ONLY the **develop** branch. Clear this checkbox! You need to clone all of the branches!
 
 ## Setting up the database:
 
