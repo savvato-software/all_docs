@@ -66,7 +66,7 @@ You should get the following response from the terminal:
     4 rows in set (0.04 sec)
 ```
                             
-If you see tribeapp_db listed above, it is okay, we will be dropping any existing database.
+If you see tribeapp_db listed above, it means you have run these instructions before. No worries, it is okay, we will be dropping any existing database.
 
 Type:
         
