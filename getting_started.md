@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-    How to run tribe-app locally on your computer (mac)
+    How to run tribe-app locally on your computer
 </p>
 
 ## Install the following on your computer locally:
@@ -27,7 +27,9 @@ You will use github.com to share code with the rest of the team. You will need t
 2. https://github.com/savvato-software/tribe-app-frontend
 3. https://github.com/savvato-software/savvato-javascript-services
 
-Remember to FORK the above repos, otherwise you won't be able to submit your code changes. When you do your FORK, you will have the option to clone ONLY the **develop** branch. Clear this checkbox! You need to clone all of the branches!
+Remember to FORK the above repos, otherwise you won't be able to submit your code changes. 
+
+When you do your FORK, you will have the option to clone ONLY the **develop** branch. _Clear this checkbox!_ You need to clone all of the branches!
 
 ## Setting up the database:
 
@@ -69,14 +71,18 @@ You should get the following response from the terminal:
 If you see tribeapp_db listed above, it means you have run these instructions before. No worries, it is okay, we will be dropping any existing database.
 
 Type:
-        
+```    
     DROP DATABASE tribeapp_db;
-
+```
+```
     CREATE DATABASE tribeapp_db;
-
+```
+```
     CREATE USER 'tribeapp_db_user'@'localhost' IDENTIFIED BY 'supersecure';
-
+```
+```
     GRANT ALL PRIVILEGES on tribeapp_db.* TO 'tribeapp_db_user'@'localhost';
+```
 
 ## Running the backend
 
