@@ -1,3 +1,4 @@
+<img align="right" src="http://savvato.com/images/savvato-logo.jpg">
 
 <p align="center">
     Getting started 
