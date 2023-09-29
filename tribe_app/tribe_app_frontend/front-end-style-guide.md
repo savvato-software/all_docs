@@ -13,11 +13,11 @@ The page and subpage layout includes the following:
 
 Webpage Layout
 
-![webpage-template](./images/frontend-style-guide-web-page-layout.jpg)
+![webpage-template](images/frontend-style-guide-web-page-layout.jpg)
 
 Mobile Layout
 
-![mobile-template](./images/frontend-style-guide-mobile-layout.jpg)
+![mobile-template](images/frontend-style-guide-mobile-layout.jpg)
 
 ## Shared Components
 
@@ -29,7 +29,7 @@ Shared headers are included on all pages and subpages and include the following 
 
 Header Layout
 
-![shared-header-template](./images/frontend-style-guide-shared-header.jpg)
+![shared-header-template](images/frontend-style-guide-shared-header.jpg)
 
 ### Adding Shared Header to a Page
 
