@@ -107,4 +107,4 @@ The following command will launch the front end
     
     
 ----
-If you run into any issues, please reach out in Slack! Also feel free to propose any improvement to this documentation. Thanks!
+If you run into any issues, please reach out in Discord! Also feel free to propose any improvement to this documentation. Thanks!
