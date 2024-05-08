@@ -108,3 +108,5 @@ The following command will launch the front end
     
 ----
 If you run into any issues, please reach out in Discord! Also feel free to propose any improvement to this documentation. Thanks!
+
+https://discord.gg/2hk4aCTuJ8
