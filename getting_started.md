@@ -87,11 +87,9 @@ Type:
 
 ## Running the backend
 
-Look in the `#getting-started` channel in Slack, and there is a file `application.properties`. You need to copy this file, and place it in your backend repo directory at `./src/main/resources/application.properties`.
+Open a new terminal window and navigate to the tribe-app-backend folder and type:
 
-Then, open a new terminal window and navigate to the tribe-app-backend folder and type:
-
-    cp ./src/main/resources/application-dev.properties ./src/main/resources/application.properties
+    cp ./src/main/resources/application-dev.properties ./src/main/resources/application.properties  # Copy the environment settings into place
     mvn spring-boot:run
 
 
@@ -99,7 +97,7 @@ Then, open a new terminal window and navigate to the tribe-app-backend folder an
 
 Open a new terminal window and navigate to the tribe-app-frontend folder and type:
 
-    cp src/app/_environments/environment.dev.ts  src/app/_environments/environment.ts 
+    cp src/app/_environments/environment.dev.ts  src/app/_environments/environment.ts # Copy the environment settings into place
     npm install -g @ionic/cli
     npm install
 
