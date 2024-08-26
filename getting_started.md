@@ -13,7 +13,7 @@
 1. MySQL server and client (v8.0.30, or higher, but less than v8.1)
 2. NodeJS along with npm (most recent)
 3. Java 22
-4. Maven (most recent)
+4. Maven (v3.9.9 or higher)
 
 5. Chrome or Firefox web browser
 6. IntelliJ
